@@ -150,3 +150,37 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+import random
+
+setGame = True
+
+while setGame:
+    correct = 0
+    random.shuffle(states)
+    incorrect = 0
+   
+
+    test = input("Do you know your capitals, Find out. please answer with (y/n)")
+    if test == "n":
+        setGame = False
+        print("Come back when you want to test your knowledge>")
+
+    if test == "y":
+        print("Lets bring the capital test.")
+        #change the the number to how many questions you want to answer.
+        for state in (states[:3]):
+            test = input("What is the capital of " + state["name"]+ "? ")
+            if test == state["capital"]:
+                correct = correct + 1
+                print("You got that capital correct. One point added")
+            if test != state["capital"]:
+                incorrect = incorrect + 1 
+                print("You didn't get that capital right.")
+        print("The game has finished you got", correct,  "correct and ",(incorrect), "incorrect" )
+        test = input("Do you want to play again? (y/n)")
+        if test == "y":
+            setGame = True
+        else: 
+            print("Come back when you want to test your knowledge again.")
+            setGame = False
